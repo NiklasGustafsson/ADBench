@@ -232,7 +232,7 @@ Class Tool {
 
 					$dir_in = "$([Tool]::gmm_dir_in)$sz/"
 					$dir_out = "$script:tmpdir/gmm/$sz/$($this.name)/"
-					mkdir -force $dir_out
+					New-Item -Path $dir_out -ItemType Directory -ErrorAction Ignore
 
 					foreach ($d in $script:gmm_d_vals) {
 						Write-Host "      d=$d"
@@ -285,7 +285,7 @@ Class Tool {
 
 					$dir_in = "$([Tool]::hand_dir_in)${type}_$sz/"
 					$dir_out = "$script:tmpdir/hand/${type}_$sz/$($this.name)/"
-					mkdir -force $dir_out
+					New-Item -Path $dir_out -ItemType Directory -ErrorAction Ignore
 
 					for ($n = [Tool]::hand_min_n; $n -le [Tool]::hand_max_n; $n++) {
 						Write-Host "      $n"
@@ -299,7 +299,7 @@ Class Tool {
 	[void] testlstm () {
 		Write-Host "  LSTM"
 		$dir_out = "$script:tmpdir/lstm/$($this.name)/"
-		mkdir -force $dir_out
+		New-Item -Path $dir_out -ItemType Directory -ErrorAction Ignore
 
 		foreach ($l in [Tool]::lstm_l_vals) {
 			Write-Host "    l=$l"
