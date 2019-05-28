@@ -255,7 +255,7 @@ Class Tool {
 		if ($this.eigen_config[3]) {$objs += @("BA-Eigen") }
 
 		$dir_out = "$script:tmpdir/ba/$($this.name)/"
-		if (!(Test-Path $dir_out)) { mkdir $dir_out }
+		if (!(Test-Path $dir_out)) { New-Item -Path $dir_out -ItemType Directory -ErrorAction Ignore }
 
 		foreach ($obj in $objs) {
 			Write-Host "  $obj"
